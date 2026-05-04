@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+.env
+
+# Generated data (large; reproduced by generate_data.py)
+data/
+*.csv
+*.parquet
+*.h5
+*.pkl
+*.npy
+*.npz
+*.jsonl
+
+# But DO commit dashboard figures and final metrics — they're the showcase.
+!assets/
+!assets/*.png
+!results/
+!results/metrics.json
+
+# Models / artifacts (transformers can be HUGE)
+models/
+*.pt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+mlruns/
+wandb/
+checkpoints/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Journals (per ~/.claude/CLAUDE.md — never commit raw command output)
+journal-*.md
+
+# Secrets / API keys (anthropic, etc.)
+.env.local
+*.key
+secrets.json
