@@ -18,31 +18,12 @@
 
 > Generate a sentiment dataset where 25% of examples are *negated* — the polarity flipper word `not` near a polarity-bearing adjective. Train a small transformer encoder from scratch and verify it actually learns to use `not`, not just shortcut to "positive adjective in sentence → positive."
 
-<table>
-<tr>
-<td align="center" width="33%">
-<sub>Final test accuracy</sub><br>
-<b style="font-size:1.6em; color:#3B6EA8;">100.0%</b><br>
-<sub>perfect on plain & negated</sub>
-</td>
-<td align="center" width="33%">
-<sub>Negated test accuracy</sub><br>
-<b style="font-size:1.6em; color:#3B6EA8;">100.0%</b><br>
-<sub>the model uses "not" correctly</sub>
-</td>
-<td align="center" width="33%">
-<sub>Epochs to converge</sub><br>
-<b style="font-size:1.6em; color:#3B6EA8;">2</b><br>
-<sub>~2 epochs to 100% test acc</sub>
-</td>
-</tr>
-</table>
-
-| Slice | Test accuracy |
-|---|---:|
-| Plain examples (e.g., "The movie was wonderful") | **100.0%** |
-| **Negated examples (e.g., "It was not terrible — the song was excellent")** | **100.0%** |
-| **Overall** | **100.0%** |
+<p align="center">
+  <img src="https://img.shields.io/badge/Final_test_accuracy-100%25-3B6EA8?style=for-the-badge" alt="Final test accuracy 100%">
+  <img src="https://img.shields.io/badge/Final_train_accuracy-100%25-3B6EA8?style=for-the-badge" alt="Final train accuracy 100%">
+  <img src="https://img.shields.io/badge/Epochs_to_converge-2-7A7A7A?style=for-the-badge" alt="Epochs to converge 2">
+</p>
+<p align="center"><sub>Test &amp; train accuracy &rarr; <b>epoch 2</b> (of 8)&nbsp;·&nbsp;plain-slice acc = 100%&nbsp;·&nbsp;negated-slice acc = 100%&nbsp;·&nbsp;vocab size = 58</sub></p>
 
 <sub>**Headline finding:** a 2-layer transformer with ~64-dim embeddings — well under 100K parameters total — easily masters this task in under 30 seconds on CPU. The negated-slice accuracy proves the model is genuinely *reading* the sentence, not bag-of-words-classifying. The attention plots below show the same thing visually.</sub>
 
@@ -137,6 +118,34 @@ No HuggingFace or scikit-learn dependency; the transformer is implemented entire
 ---
 
 ## Dashboard
+
+### Accuracy scorecard
+
+<table>
+<tr><th align="left">Slice</th><th>Test accuracy</th></tr>
+<tr>
+  <td><b>Overall</b></td>
+  <td align="center"><img src="https://img.shields.io/badge/100%25-3B6EA8?style=flat-square" alt="100%"></td>
+</tr>
+<tr>
+  <td>Plain sentences</td>
+  <td align="center"><img src="https://img.shields.io/badge/100%25-3B6EA8?style=flat-square" alt="100%"></td>
+</tr>
+<tr>
+  <td>Negated sentences</td>
+  <td align="center"><img src="https://img.shields.io/badge/100%25-3B6EA8?style=flat-square" alt="100%"></td>
+</tr>
+<tr>
+  <td><sub>Epoch 1 test acc</sub></td>
+  <td align="center"><img src="https://img.shields.io/badge/99.0%25-7A7A7A?style=flat-square" alt="99.0%"></td>
+</tr>
+<tr>
+  <td><sub>Epoch 2 test acc (converged)</sub></td>
+  <td align="center"><img src="https://img.shields.io/badge/100%25-3B6EA8?style=flat-square" alt="100%"></td>
+</tr>
+</table>
+
+<sub>Blue = 100% (best) &middot; Gray = context value &middot; Confusion matrix: [[207, 0], [0, 193]] — zero off-diagonal errors &middot; values from <code>results/metrics.json</code>.</sub>
 
 ### 1. The dataset — examples
 
