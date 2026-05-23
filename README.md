@@ -14,6 +14,10 @@
 
 ---
 
+<p align="center">
+  <a href="https://linnps.github.io/ml-07-transformer-nlp/"><img src="https://img.shields.io/badge/View_Live_Dashboard-0E2841?style=for-the-badge&amp;logo=githubpages&amp;logoColor=white" alt="View live dashboard"></a>
+</p>
+
 ## At a glance
 
 > Generate a sentiment dataset where 25% of examples are *negated* — the polarity flipper word `not` near a polarity-bearing adjective. Train a small transformer encoder from scratch and verify it actually learns to use `not`, not just shortcut to "positive adjective in sentence → positive."
